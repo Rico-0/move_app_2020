@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { HashRouter, Route } from 'react-router-dom';
+import About from './router/About';
+import Home from './router/Home'
+import Navigation from './components/Navigation';
+import Detail from './router/Detail';
 
-function App() {
+
+// Link, Router 컴포넌트는 반드시 HashRouter 안에 포함되어야 한다.
+// exact={true} 는 route 컴포넌트가 path props와 정확하게 일치하는 URL에만 반응하도록 만들어 준다.
+function App(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Navigation />
+      <Route path="/"exact={true} component = {Home}  />
+      <Route path = "/about" component = {About} />
+      <Route path = "/movie-detail" component = {Detail} />
+    </HashRouter>
   );
 }
 
